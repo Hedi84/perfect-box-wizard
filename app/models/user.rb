@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  # has_one :onboarding, dependent: :destroy
+  has_one :onboarding, dependent: :destroy
 
   enum :role, {
     customer: 0,

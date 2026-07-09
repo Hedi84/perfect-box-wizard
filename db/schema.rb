@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_145329) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_09_164232) do
+  create_table "onboardings", force: :cascade do |t|
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "city"
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.string "current_step", default: "personal", null: false
+    t.json "dietary_preferences", default: [], null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "postcode"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["completed_at"], name: "index_onboardings_on_completed_at"
+    t.index ["current_step"], name: "index_onboardings_on_current_step"
+    t.index ["user_id"], name: "index_onboardings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
@@ -18,4 +36,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_145329) do
     t.integer "role"
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "onboardings", "users"
 end
