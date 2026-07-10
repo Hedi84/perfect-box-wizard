@@ -15,6 +15,16 @@ RSpec.describe Onboarding, type: :model do
     expect(onboarding).not_to be_valid
   end
 
+  it "only allows one onboarding per user" do
+    user = create(:user)
+    create(:onboarding, user: user)
+
+    duplicate = build(:onboarding, user: user)
+
+    expect(duplicate).not_to be_valid
+    expect(duplicate.errors[:user_id]).to be_present
+  end
+
   describe "on the :personal step" do
     it "requires first_name and last_name" do
       onboarding = build(:onboarding, first_name: nil, last_name: nil)

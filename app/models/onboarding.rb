@@ -18,6 +18,7 @@ class Onboarding < ApplicationRecord
 
   belongs_to :user
 
+  validates :user_id, uniqueness: true
   validates :current_step, inclusion: { in: STEPS }
 
   validates :first_name, :last_name,
