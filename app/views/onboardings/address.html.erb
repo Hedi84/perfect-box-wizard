@@ -1,32 +1,36 @@
-<h1>📍 Where should we deliver?</h1>
+<div class="card">
+  <h1>📍 Where should we deliver?</h1>
 
-<p>Tell us where your weekly boxes should arrive.</p>
+  <p>Tell us where your weekly boxes should arrive.</p>
 
-<%= form_with model: @onboarding,
-              url: step_onboarding_path("address"),
-              method: :patch do |form| %>
+  <%= form_with model: @onboarding,
+                url: step_onboarding_path("address"),
+                method: :patch do |form| %>
 
-  <div>
-    <%= form.label :address_line_1 %><br>
-    <%= form.text_field :address_line_1 %>
-  </div>
+    <div>
+      <%= form.label :address_line_1 %><br>
+      <%= form.text_field :address_line_1 %>
+    </div>
 
-  <div>
-    <%= form.label :address_line_2 %><br>
-    <%= form.text_field :address_line_2 %>
-  </div>
+    <div>
+      <%= form.label :address_line_2 %><br>
+      <%= form.text_field :address_line_2 %>
+    </div>
 
-  <div>
-    <%= form.label :city %><br>
-    <%= form.text_field :city %>
-  </div>
+    <div>
+      <%= form.label :city %><br>
+      <%= form.text_field :city %>
+    </div>
 
-  <div>
-    <%= form.label :postcode %><br>
-    <%= form.text_field :postcode %>
-  </div>
+    <div>
+      <%= form.label :postcode %><br>
+      <%= form.text_field :postcode %>
+    </div>
 
-  <%= link_to "← Back", step_onboarding_path("personal") %>
-  <%= form.submit "Continue →" %>
+    <div class="card-actions">
+      <%= link_to "← Back", step_onboarding_path("personal") %>
+      <%= form.submit "Continue →" %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
