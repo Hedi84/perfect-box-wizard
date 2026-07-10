@@ -1,0 +1,25 @@
+<h1>🎉 Welcome, <%= @onboarding.first_name %>!</h1>
+
+<p>Your account has been created successfully.</p>
+
+<h2>Your details</h2>
+
+<ul>
+  <li><strong>Name:</strong> <%= @onboarding.first_name %> <%= @onboarding.last_name %></li>
+  <li><strong>Email:</strong> <%= @onboarding.user.email %></li>
+  <li><strong>Address:</strong></li>
+  <li>
+    <%= @onboarding.address_line_1 %><br>
+    <% if @onboarding.address_line_2.present? %>
+      <%= @onboarding.address_line_2 %><br>
+    <% end %>
+    <%= @onboarding.city %><br>
+    <%= @onboarding.postcode %>
+  </li>
+  <li>
+    <strong>Dietary preferences:</strong>
+    <%= @onboarding.dietary_preferences.map(&:humanize).join(", ") %>
+  </li>
+</ul>
+
+<p>🍽️ Your personalised recipes will appear here.</p>

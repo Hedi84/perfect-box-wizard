@@ -1,15 +1,17 @@
-<h1>Build Your Perfect Box</h1>
+<h1>🍽️ Build Your Perfect Box</h1>
 
-<p>Create your food profile and discover recipes picked for you.</p>
-
-<%= button_to "Start onboarding", onboarding_path, method: :get %>
-
-<hr>
-
-<h2>Already started?</h2>
+<p>Sign in to pick up where you left off, or enter an email and password to create an account and start onboarding.</p>
 
 <%= form_with url: session_path do |form| %>
-  <%= form.email_field :email, placeholder: "Email" %>
-  <%= form.password_field :password, placeholder: "Password" %>
-  <%= form.submit "Sign in" %>
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </div>
+
+  <%= form.submit "Continue" %>
 <% end %>

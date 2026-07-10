@@ -1,0 +1,25 @@
+<h1>👋 Tell us about you</h1>
+
+<p>Let's get to know you before we start cooking.</p>
+
+<%= form_with url: step_onboarding_path("personal"), method: :patch do |form| %>
+
+  <fieldset>
+    <legend>About you</legend>
+
+    <%= fields_for :onboarding, @onboarding do |f| %>
+      <div>
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div>
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <%= form.submit "Continue →" %>
+
+<% end %>
