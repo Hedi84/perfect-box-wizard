@@ -1,8 +1,9 @@
 class OnboardingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_onboarding
+  before_action :set_onboarding, unless: :admin_user?
 
   def show
+    return render_admin_summary if admin_user?
     return render :summary if @onboarding.completed?
 
     current = current_or_first_step
@@ -47,6 +48,15 @@ class OnboardingsController < ApplicationController
   end
 
   private
+
+  def admin_user?
+    current_user.admin?
+  end
+
+  def render_admin_summary
+    @onboardings = Onboarding.includes(:user).order(:created_at)
+    render :admin_summary
+  end
 
   def set_onboarding
     @onboarding = current_user.onboarding || current_user.build_onboarding

@@ -26,7 +26,12 @@ RSpec.describe User, type: :model do
     expect(user.authenticate("wrongpassword")).to be false
   end
 
-  it "defaults to the customer role" do
+  it "defaults to the customer role when built via the factory" do
     expect(build(:user).role).to eq("customer")
+  end
+
+  it "defaults to the customer role at the database level when no role is given" do
+    user = User.new(email: "nobody@example.com", password: "password123")
+    expect(user.role).to eq("customer")
   end
 end

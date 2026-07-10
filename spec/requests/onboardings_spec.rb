@@ -50,6 +50,19 @@ RSpec.describe "Onboardings", type: :request do
         expect(response.body).to include(onboarding.first_name)
       end
     end
+
+    context "when the user is an admin" do
+      let(:admin) { create(:user, role: :admin) }
+      let!(:other_onboarding) { create(:onboarding, current_step: "address", completed_at: nil) }
+
+      it "renders the admin summary listing every onboarding instead of the wizard or their own summary" do
+        sign_in(admin)
+        get onboarding_path
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include(other_onboarding.first_name)
+      end
+    end
   end
 
   describe "GET /onboarding/:step" do

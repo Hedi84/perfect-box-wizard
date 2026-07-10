@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_164232) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_10_164935) do
   create_table "onboardings", force: :cascade do |t|
     t.string "address_line_1"
     t.string "address_line_2"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_164232) do
     t.datetime "created_at", null: false
     t.string "email"
     t.string "password_digest"
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.datetime "updated_at", null: false
   end
 

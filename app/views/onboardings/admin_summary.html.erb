@@ -1,0 +1,36 @@
+<h1>All onboardings</h1>
+
+<div class="admin-grid">
+  <% @onboardings.each do |onboarding| %>
+    <div class="card admin-card">
+      <h2><%= onboarding.first_name %> <%= onboarding.last_name %></h2>
+
+      <p><strong>Email:</strong> <%= onboarding.user.email %></p>
+
+      <% if onboarding.address_line_1.present? %>
+        <p>
+          <strong>Address:</strong><br>
+          <%= onboarding.address_line_1 %><br>
+          <% if onboarding.address_line_2.present? %>
+            <%= onboarding.address_line_2 %><br>
+          <% end %>
+          <%= onboarding.city %><br>
+          <%= onboarding.postcode %>
+        </p>
+      <% end %>
+
+      <p>
+        <strong>Dietary preferences:</strong>
+        <%= onboarding.dietary_preferences.presence&.map(&:humanize)&.join(", ") || "None yet" %>
+      </p>
+
+      <p class="admin-status">
+        <% if onboarding.completed? %>
+          ✅ Completed
+        <% else %>
+          ⏳ In progress (<%= onboarding.current_step.humanize %>)
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
