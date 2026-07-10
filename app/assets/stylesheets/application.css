@@ -87,46 +87,6 @@ main {
   color: #555;
 }
 
-.hero {
-  position: relative;
-  width: 100vw;
-  margin-top: -3rem;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-}
-
-.hero-banner {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1983 / 793;
-  object-fit: contain;
-}
-
-.hero-cta {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  background-color: teal;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.75rem 1.75rem;
-  border-radius: 6px;
-  border: 2px solid #fff;
-}
-
-.hero-cta:hover {
-  background-color: #00696b;
-}
-
-.mid-banner {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-}
-
 .card {
   width: 100%;
   max-width: 28rem;
