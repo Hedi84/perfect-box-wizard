@@ -152,6 +152,16 @@ RSpec.describe "Onboardings", type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
         expect(user.reload.onboarding).to be_nil
       end
+
+      it "does not allow skipping ahead to a later step" do
+        sign_in(user)
+
+        expect {
+          patch step_onboarding_path("preferences"), params: { onboarding: { dietary_preferences: [ "vegan" ] } }
+        }.not_to change(Onboarding, :count)
+
+        expect(response).to redirect_to(step_onboarding_path("personal"))
+      end
     end
 
     context "when mid-wizard" do

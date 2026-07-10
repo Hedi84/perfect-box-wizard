@@ -34,7 +34,7 @@ class Onboarding < ApplicationRecord
     completed_at.present?
   end
 
-    def incomplete?
+  def incomplete?
     !completed?
   end
 

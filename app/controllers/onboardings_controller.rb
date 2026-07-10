@@ -26,9 +26,14 @@ class OnboardingsController < ApplicationController
 
   def update
     step = params[:step]
+    current = current_or_first_step
 
     unless Onboarding::STEPS.include?(step)
-      return redirect_to step_onboarding_path(current_or_first_step)
+      return redirect_to step_onboarding_path(current)
+    end
+
+    if Onboarding::STEPS.index(step) > Onboarding::STEPS.index(current)
+      return redirect_to step_onboarding_path(current)
     end
 
     @step = step
