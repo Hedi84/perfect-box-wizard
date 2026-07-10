@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_10_164935) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_10_170838) do
   create_table "onboardings", force: :cascade do |t|
     t.string "address_line_1"
     t.string "address_line_2"
@@ -27,6 +27,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_10_164935) do
     t.index ["completed_at"], name: "index_onboardings_on_completed_at"
     t.index ["current_step"], name: "index_onboardings_on_current_step"
     t.index ["user_id"], name: "index_onboardings_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.json "tags", default: [], null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
