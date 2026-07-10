@@ -5,10 +5,18 @@ class OnboardingsController < ApplicationController
   def show
     return render :summary if @onboarding.completed?
 
-    step = current_or_first_step
-    return redirect_to step_onboarding_path(step) if params[:step] != step
+    current = current_or_first_step
+    requested = params[:step]
 
-    @step = step
+    if requested.nil? || !Onboarding::STEPS.include?(requested)
+      return redirect_to step_onboarding_path(current)
+    end
+
+    if Onboarding::STEPS.index(requested) > Onboarding::STEPS.index(current)
+      return redirect_to step_onboarding_path(current)
+    end
+
+    @step = requested
     render @step
   end
 

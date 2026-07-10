@@ -84,6 +84,14 @@ RSpec.describe "Onboardings", type: :request do
         get step_onboarding_path("address")
         expect(response).to have_http_status(:success)
       end
+
+      it "allows navigating back to an earlier, already-completed step" do
+        sign_in(user)
+        get step_onboarding_path("personal")
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include(onboarding.first_name)
+      end
     end
 
     context "when the user has completed onboarding" do
@@ -149,6 +157,17 @@ RSpec.describe "Onboardings", type: :request do
         patch step_onboarding_path("not-a-real-step"), params: {}
 
         expect(response).to redirect_to(step_onboarding_path("address"))
+      end
+
+      it "lets the user edit an earlier step and keeps their progress" do
+        sign_in(user)
+        patch step_onboarding_path("personal"), params: { onboarding: { first_name: "Grace", last_name: "Hopper" } }
+
+        expect(response).to redirect_to(step_onboarding_path("address"))
+        onboarding.reload
+        expect(onboarding.first_name).to eq("Grace")
+        expect(onboarding.last_name).to eq("Hopper")
+        expect(onboarding.current_step).to eq("address")
       end
     end
 
