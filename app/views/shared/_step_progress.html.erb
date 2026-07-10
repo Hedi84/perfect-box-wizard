@@ -1,0 +1,18 @@
+<% current_index = Onboarding::STEPS.index(@step) %>
+<% total = Onboarding::STEPS.size %>
+<% remaining = total - current_index - 1 %>
+
+<div class="step-progress">
+  <div class="step-progress-bar">
+    <div class="step-progress-fill" style="width: <%= ((current_index + 1).to_f / total * 100).round %>%"></div>
+  </div>
+
+  <p class="step-progress-label">
+    Step <%= current_index + 1 %> of <%= total %>
+    <% if remaining > 0 %>
+      &mdash; <%= pluralize(remaining, "step") %> left
+    <% else %>
+      &mdash; last step!
+    <% end %>
+  </p>
+</div>

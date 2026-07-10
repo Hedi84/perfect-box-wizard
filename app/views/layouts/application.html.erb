@@ -27,5 +27,6 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flash" %>
     <main><%= yield %></main>
+    <%= render "shared/step_progress" if @step %>
   </body>
 </html>
