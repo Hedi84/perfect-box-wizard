@@ -166,6 +166,18 @@ main {
   gap: 0.5rem;
 }
 
+.checkbox-group--disabled {
+  opacity: 0.4;
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+.preferences-divider {
+  margin: 1.25rem 0 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
 .card-actions {
   display: flex;
   align-items: center;

@@ -7,17 +7,47 @@
                 url: step_onboarding_path("preferences"),
                 method: :patch do |form| %>
 
-    <div class="checkbox-group">
-      <% Onboarding::DIETARY_TAGS.each do |tag| %>
+    <div data-controller="diet-group">
+      <div class="checkbox-group">
         <div class="checkbox-row">
           <%= check_box_tag "onboarding[dietary_preferences][]",
-                            tag,
-                            @onboarding.dietary_preferences&.include?(tag),
-                            id: tag %>
+                            "gluten_free",
+                            @onboarding.dietary_preferences&.include?("gluten_free"),
+                            id: "gluten_free" %>
 
-          <%= label_tag tag, tag.humanize %>
+          <%= label_tag "gluten_free", "gluten_free".humanize %>
         </div>
-      <% end %>
+      </div>
+
+      <div class="checkbox-group" data-diet-group-target="groupA">
+        <% %w[vegan vegetarian pescatarian].each do |tag| %>
+          <div class="checkbox-row">
+            <%= check_box_tag "onboarding[dietary_preferences][]",
+                              tag,
+                              @onboarding.dietary_preferences&.include?(tag),
+                              id: tag,
+                              data: { "diet-group-target": "checkboxA", action: "change->diet-group#refresh" } %>
+
+            <%= label_tag tag, tag.humanize %>
+          </div>
+        <% end %>
+      </div>
+
+      <p class="preferences-divider">Not quite you? Pick one of the following:</p>
+
+      <div class="checkbox-group" data-diet-group-target="groupB">
+        <% %w[flexitarian carnivore].each do |tag| %>
+          <div class="checkbox-row">
+            <%= check_box_tag "onboarding[dietary_preferences][]",
+                              tag,
+                              @onboarding.dietary_preferences&.include?(tag),
+                              id: tag,
+                              data: { "diet-group-target": "checkboxB", action: "change->diet-group#refresh" } %>
+
+            <%= label_tag tag, tag.humanize %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="card-actions">
