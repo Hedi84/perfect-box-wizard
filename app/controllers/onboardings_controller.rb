@@ -18,7 +18,7 @@ class OnboardingsController < ApplicationController
     end
 
     @step = requested
-    render @step
+    render_step
   end
 
   def resume
@@ -43,7 +43,7 @@ class OnboardingsController < ApplicationController
       redirect_after(result.onboarding)
     else
       @onboarding = result.onboarding
-      render @step, status: :unprocessable_entity
+      render_step(status: :unprocessable_entity)
     end
   end
 
@@ -61,6 +61,14 @@ class OnboardingsController < ApplicationController
   def render_summary
     @recipes = RecipeMatcher.new(@onboarding.dietary_preferences).call.sample(3)
     render :summary
+  end
+
+  def render_step(status: :ok)
+    case @step
+    when "personal" then render :personal, status: status
+    when "address" then render :address, status: status
+    when "preferences" then render :preferences, status: status
+    end
   end
 
   def set_onboarding
