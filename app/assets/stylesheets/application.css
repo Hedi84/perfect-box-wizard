@@ -121,6 +121,12 @@ main {
   background-color: #00696b;
 }
 
+.mid-banner {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
 .card {
   width: 100%;
   max-width: 28rem;
@@ -213,6 +219,34 @@ main {
 @media (max-width: 480px) {
   .card {
     padding: 1.5rem;
+  }
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 70rem;
+}
+
+.admin-card {
+  max-width: none;
+}
+
+.admin-status {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
   }
 }
 
