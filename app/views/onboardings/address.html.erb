@@ -3,6 +3,8 @@
 
   <p>Tell us where your weekly boxes should arrive.</p>
 
+  <%= render "errors" %>
+
   <%= form_with model: @onboarding,
                 url: step_onboarding_path("address"),
                 method: :patch do |form| %>

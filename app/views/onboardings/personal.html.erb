@@ -3,6 +3,8 @@
 
   <p>Let's get to know you before we start cooking.</p>
 
+  <%= render "errors" %>
+
   <%= form_with url: step_onboarding_path("personal"), method: :patch do |form| %>
 
     <fieldset>

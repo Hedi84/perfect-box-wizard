@@ -178,6 +178,25 @@ main {
   color: #555;
 }
 
+.form-errors {
+  background-color: #fdecea;
+  color: #b42318;
+  border: 1px solid #f3b4ad;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-errors p {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+.form-errors ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
 .card-actions {
   display: flex;
   align-items: center;

@@ -3,6 +3,8 @@
 
   <p>Select all that apply.</p>
 
+  <%= render "errors" %>
+
   <%= form_with model: @onboarding,
                 url: step_onboarding_path("preferences"),
                 method: :patch do |form| %>
