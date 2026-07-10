@@ -1,5 +1,12 @@
-<div class="card">
-  <h1>🍽️ Build Your Perfect Box</h1>
+<div class="hero">
+  <%= image_tag "banner_perfect_box.png", alt: "Perfect Box", class: "hero-banner" %>
+
+  <%= link_to "Get started", "#signup", class: "hero-cta",
+              data: { controller: "smooth-scroll", action: "click->smooth-scroll#scroll" } %>
+</div>
+
+<div class="card" id="signup">
+  <h2>Sign in or create an account</h2>
 
   <p>Sign in to pick up where you left off, or enter an email and password to create an account and start onboarding.</p>
 
