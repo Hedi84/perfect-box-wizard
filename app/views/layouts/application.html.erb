@@ -24,7 +24,8 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" unless controller_name == "home" %>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flash" %>
+    <main><%= yield %></main>
   </body>
 </html>

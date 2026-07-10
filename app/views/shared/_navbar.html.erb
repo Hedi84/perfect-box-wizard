@@ -1,5 +1,7 @@
 <nav class="navbar">
   <span class="navbar-brand">🍽️ Perfect Box Wizard</span>
 
-  <%= button_to "Log out", session_path, method: :delete, class: "navbar-logout" %>
+  <% unless controller_name == "home" %>
+    <%= button_to "Log out", session_path, method: :delete, class: "navbar-logout" %>
+  <% end %>
 </nav>
