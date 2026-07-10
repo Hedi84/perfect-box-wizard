@@ -14,8 +14,8 @@ class OnboardingWizard
 
     return failure_result unless onboarding.valid?(step.to_sym)
 
-    onboarding.save!(validate: false)
     advance
+    onboarding.save!(validate: false)
 
     Result.new(success?: true, onboarding:)
   end
@@ -28,9 +28,9 @@ class OnboardingWizard
     next_step = Onboarding::STEPS[Onboarding::STEPS.index(step) + 1]
 
     if next_step
-      onboarding.update!(current_step: next_step)
+      onboarding.current_step = next_step
     else
-      onboarding.update!(completed_at: Time.current)
+      onboarding.completed_at = Time.current
     end
   end
 
