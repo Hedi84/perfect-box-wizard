@@ -22,6 +22,8 @@
       <%= @onboarding.dietary_preferences.map(&:humanize).join(", ") %>
     </li>
   </ul>
-
-  <p>🍽️ Your personalised recipes will appear here.</p>
 </div>
+
+<h2>🍽️ Recipes picked for you</h2>
+
+<%= render "recipes/recipe_cards", recipes: @recipes %>

@@ -4,7 +4,7 @@ class OnboardingsController < ApplicationController
 
   def show
     return render_admin_summary if admin_user?
-    return render :summary if @onboarding.completed?
+    return render_summary if @onboarding.completed?
 
     current = current_or_first_step
     requested = params[:step]
@@ -56,6 +56,11 @@ class OnboardingsController < ApplicationController
   def render_admin_summary
     @onboardings = Onboarding.includes(:user).order(:created_at)
     render :admin_summary
+  end
+
+  def render_summary
+    @recipes = RecipeMatcher.new(@onboarding.dietary_preferences).call.sample(3)
+    render :summary
   end
 
   def set_onboarding

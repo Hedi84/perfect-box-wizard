@@ -14,8 +14,8 @@ class Recipe < ApplicationRecord
   private
 
   def tags_are_valid
-    invalid_tags = tags - TAGS
+    return if tags.all? { |tag| TAGS.include?(tag) }
 
-    errors.add(:tags, "must only include #{TAGS.join(", ")}") if invalid_tags.any?
+    errors.add(:tags, "must only include #{TAGS.join(", ")}")
   end
 end

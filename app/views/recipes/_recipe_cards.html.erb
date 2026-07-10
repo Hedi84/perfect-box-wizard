@@ -1,0 +1,14 @@
+<div class="card-grid">
+  <% recipes.each do |recipe| %>
+    <div class="card card-grid-item">
+      <h2><%= recipe.title %></h2>
+
+      <p><%= recipe.body %></p>
+
+      <p>
+        <strong>Tags:</strong>
+        <%= recipe.tags.presence&.map(&:humanize)&.join(", ") || "None" %>
+      </p>
+    </div>
+  <% end %>
+</div>

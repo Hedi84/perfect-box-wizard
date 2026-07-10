@@ -1,8 +1,8 @@
 <h1>All onboardings</h1>
 
-<div class="admin-grid">
+<div class="card-grid">
   <% @onboardings.each do |onboarding| %>
-    <div class="card admin-card">
+    <div class="card card-grid-item">
       <h2><%= onboarding.first_name %> <%= onboarding.last_name %></h2>
 
       <p><strong>Email:</strong> <%= onboarding.user.email %></p>

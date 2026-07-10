@@ -34,6 +34,24 @@ RSpec.describe Onboarding, type: :model do
     end
   end
 
+  describe "dietary_preferences" do
+    it "allows any combination of the known tags" do
+      onboarding = build(:onboarding, dietary_preferences: %w[vegan gluten_free])
+      expect(onboarding).to be_valid
+    end
+
+    it "allows an empty list" do
+      onboarding = build(:onboarding, dietary_preferences: [])
+      expect(onboarding).to be_valid
+    end
+
+    it "rejects tags outside the known set" do
+      onboarding = build(:onboarding, dietary_preferences: %w[flexitarian pescatarian not_a_real_tag])
+      expect(onboarding).not_to be_valid
+      expect(onboarding.errors[:dietary_preferences]).to be_present
+    end
+  end
+
   describe "#completed?" do
     it "is true when completed_at is present" do
       onboarding = build(:onboarding, completed_at: Time.current)

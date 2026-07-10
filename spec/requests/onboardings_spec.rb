@@ -49,6 +49,16 @@ RSpec.describe "Onboardings", type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include(onboarding.first_name)
       end
+
+      it "shows at most 3 recipes even when more match" do
+        create_list(:recipe, 5, tags: [])
+
+        sign_in(user)
+        get onboarding_path
+
+        cards = Nokogiri::HTML(response.body).css(".card-grid-item")
+        expect(cards.size).to eq(3)
+      end
     end
 
     context "when the user is an admin" do

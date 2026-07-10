@@ -28,11 +28,21 @@ class Onboarding < ApplicationRecord
             presence: true,
             on: :address
 
+  validate :dietary_preferences_are_valid
+
   def completed?
     completed_at.present?
   end
 
     def incomplete?
     !completed?
+  end
+
+  private
+
+  def dietary_preferences_are_valid
+    return if dietary_preferences.all? { |tag| DIETARY_TAGS.include?(tag) }
+
+    errors.add(:dietary_preferences, "must only include #{DIETARY_TAGS.join(", ")}")
   end
 end
