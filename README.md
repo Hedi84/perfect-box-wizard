@@ -8,6 +8,8 @@ The application allows users to create an account, complete a three-step onboard
 
 [Perfect Box Wizard](https://perfect-box-wizard.onrender.com/)
 
+Please be aware that Render my take a moment to start up when it has been dormant for a while.
+
 ## Tech Stack
 
 * Ruby 3.3.4
