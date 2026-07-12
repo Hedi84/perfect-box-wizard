@@ -44,6 +44,15 @@ admin@example.com / password123
 bundle exec rspec
 ```
 
+## This app includes the following features:
+
+- Three-step onboarding journey with step-specific validation
+- Forward and backward navigation without losing entered data
+- Persisted onboarding progress and resume support
+- Completion summary with recipe recommendations
+- Progress indicator
+- Admin view of completed and incomplete onboardings
+
 ---
 
 # Design Decisions
