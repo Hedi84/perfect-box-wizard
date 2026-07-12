@@ -2,7 +2,7 @@
 
 A Ruby on Rails 8 application demonstrating a multi-step onboarding wizard for a fictional subscription box service.
 
-The application allows users to create an account, complete a three-step onboarding process, resume an incomplete onboarding, view a summary of their selections, and receive recipe recommendations based on their dietary preferences. An admin dashboard is also included to view completed and incomplete onboardings.
+The application allows users to create an account, complete a three-step onboarding process, resume an incomplete onboarding, view a summary of their selections, and receive recipe recommendations based on their dietary preferences. An admin dashboard is also included to view completed and incomplete onboardings. The focus of this exercise was demonstrating Rails architecture and a cohesive user experience rather than implementing production-ready authentication.
 
 A live version of the application can be viewed at:
 
