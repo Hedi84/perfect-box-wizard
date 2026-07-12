@@ -6,7 +6,7 @@ The application allows users to create an account, complete a three-step onboard
 
 A live version of the application can be viewed at:
 
-**<Render URL>**
+[**<Render URL>**](https://perfect-box-wizard.onrender.com/)
 
 ## Tech Stack
 
@@ -79,6 +79,8 @@ Currently, progressing backwards updates the stored step as well. This was a con
 
 Depending on business requirements, an alternative implementation could instead remember the furthest completed step while still allowing users to revisit earlier pages.
 
+The same applies to the recipe recommendations. As no business rules were provided, I made a number of reasonable assumptions based on common dietary preferences. For example, I assumed that a pescetarian would also be happy to receive vegetarian and vegan recipes, whereas someone selecting the carnivore option would only be interested in recipes containing meat.
+
 ## Authentication
 
 I chose to implement a simple User model using has_secure_password rather than introducing Devise.
@@ -114,3 +116,4 @@ If I had more time, I would consider implementing:
 * Improved accessibility and UI polish.
 * Email reminders for incomplete onboardings.
 * More comprehensive authorisation for admin functionality.
+* Add a diary free option to preferences.
