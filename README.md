@@ -50,15 +50,13 @@ bundle exec rspec
 
 ## Wizard architecture
 
-To keep the controllers focused on HTTP concerns, I moved the workflow logic into an `OnboardingWizard` service object. The controller is responsible for receiving requests and rendering responses, while the service object coordinates validation, persistence and progression through the wizard.
+I wanted to keep the controllers focused on handling requests and responses, so I moved the wizard workflow into an OnboardingWizard service object. The service is responsible for validating each step, persisting the submitted data, and progressing the user through the onboarding journey.
 
-For similar reasons, recipe matching lives inside a dedicated query object. This keeps the controller lean and gives the matching logic a single, well-defined responsibility.
+For similar reasons, recipe matching lives in its own query object. This keeps the matching logic separate from the controller and gives it a single, well-defined responsibility.
 
-In a larger production application I would likely consider using the Wicked gem or dedicated form objects, depending on the complexity of the workflow.
+In a larger production application, I would consider using the Wicked gem or dedicated form objects, depending on the complexity of the workflow. For this challenge, I felt that would introduce unnecessary complexity. A single Onboarding model with contextual validations, persisted progress, and a completed_at timestamp provides all the functionality required while keeping the implementation straightforward and easy to follow.
 
-I have worked on a large legacy application where the wizard logic was split across many models, form models and controllers. Although this approach is flexible, it can make the flow difficult to understand for developers who are new to the codebase. Adding a feature often requires changes in multiple places, which increases the risk of unintentionally affecting existing behaviour.
-
-For this challenge I intentionally chose a simpler architecture. Contextual model validations provide the behaviour required for a three-step wizard without introducing unnecessary complexity, while still keeping responsibilities clearly separated.
+This decision was also influenced by previous experience working on a large legacy application with a highly complex form wizard. While that architecture was very flexible, the wizard logic was spread across numerous models, form models and controllers, making it difficult for new developers to understand the flow. Adding new functionality often required changes in several different places, increasing the likelihood of introducing regressions. For a small three-step wizard like this, I believe a simpler approach is easier to understand, maintain and extend.
 
 ## Persisting onboarding progress
 
