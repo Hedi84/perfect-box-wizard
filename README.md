@@ -70,6 +70,14 @@ Currently, progressing backwards updates the stored step as well. This was a con
 
 Depending on business requirements, an alternative implementation could instead remember the furthest completed step while still allowing users to revisit earlier pages.
 
+## Authentication
+
+I chose to implement a simple User model using has_secure_password rather than introducing Devise.
+
+The authentication requirements for this challenge are intentionally small: users only need to create an account, sign in, and resume an incomplete onboarding. has_secure_password provides everything needed for those requirements while keeping the implementation lightweight and allowing the focus to remain on the onboarding flow itself.
+
+In a production application I would likely use a more fully featured authentication solution such as Devise, particularly where features such as password resets, email verification, account locking, or OAuth providers are required.
+
 ---
 
 # Testing
